@@ -11,11 +11,11 @@
 <?php /** @var Trustedshops_Trustedshops_Block_Trustcard $this */ ?>
 <?php if ($this->collectOrders()) : ?>
     <div id="trustedShopsCheckout" style="display: none;">
-        <span id="tsCheckoutOrderNr"><?php echo $this->getOrder()->getIncrementId() ?></span>
-        <span id="tsCheckoutBuyerEmail"><?php echo $this->getOrder()->getCustomerEmail() ?></span>
+        <span id="tsCheckoutOrderNr"><?php echo $this->getIncrementId() ?></span>
+        <span id="tsCheckoutBuyerEmail"><?php echo $this->getCustomerEmail() ?></span>
         <span id="tsCheckoutOrderAmount"><?php echo $this->getOrderAmount() ?></span>
-        <span id="tsCheckoutOrderCurrency"><?php echo $this->getOrder()->getStoreCurrencyCode() ?></span>
-        <span id="tsCheckoutOrderPaymentType"><?php echo $this->getOrder()->getPayment()->getMethod() ?></span>
+        <span id="tsCheckoutOrderCurrency"><?php echo $this->getStoreCurrencyCode() ?></span>
+        <span id="tsCheckoutOrderPaymentType"><?php echo $this->getPaymentMethod() ?></span>
         <span id="tsCheckoutOrderEstDeliveryDate"><?php echo $this->getEstimatedDeliveryDate() ?></span>
         <?php if ($this->collectReviews()) : ?>
             <!-- product reviews start -->

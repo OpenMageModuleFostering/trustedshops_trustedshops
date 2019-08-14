@@ -39,15 +39,20 @@ class Trustedshops_Trustedshops_Block_Trustcard extends Trustedshops_Trustedshop
      */
     public function getOrder()
     {
-        if (is_null($this->_order)) {
-            $session = Mage::getSingleton('checkout/session');
-            $lastOrder = $session->getLastRealOrder();
-            if (empty($lastOrder)) {
-                $lastOrder = $session->getLastOrderId();
-                $lastOrder = Mage::getModel('sales/order')->load($lastOrder);
+        try {
+            if (is_null($this->_order)) {
+                $session = Mage::getSingleton('checkout/session');
+                $lastOrder = $session->getLastRealOrder();
+                if (empty($lastOrder)) {
+                    $lastOrder = $session->getLastOrderId();
+                    $lastOrder = Mage::getModel('sales/order')->load($lastOrder);
+                }
+                $this->_order = $lastOrder;
             }
-            $this->_order = $lastOrder;
+        } catch (Exception $e) {
+            $this->_order = null;
         }
+
         return $this->_order;
     }
 
@@ -76,6 +81,10 @@ class Trustedshops_Trustedshops_Block_Trustcard extends Trustedshops_Trustedshop
      */
     public function collectReviews()
     {
+        if (!$this->getOrder()) {
+            return false;
+        }
+
         if ($this->isExpert()) {
             if (!$this->getConfig('collect_orders', 'trustbadge')) {
                 return false;
@@ -86,13 +95,69 @@ class Trustedshops_Trustedshops_Block_Trustcard extends Trustedshops_Trustedshop
     }
 
     /**
+     * @return string
+     */
+    public function getIncrementId()
+    {
+        if (!$this->getOrder()) {
+            return "";
+        }
+
+        return $this->getOrder()->getIncrementId();
+    }
+
+    /**
+     * @return string
+     */
+    public function getCustomerEmail()
+    {
+        if (!$this->getOrder()) {
+            return "";
+        }
+
+        return $this->getOrder()->getCustomerEmail();
+    }
+
+    /**
      * get the formatted order amount
      *
      * @return string
      */
     public function getOrderAmount()
     {
+        if (!$this->getOrder()) {
+            return "";
+        }
+
         return $this->getOrder()->getGrandTotal();
+    }
+
+    /**
+     * @return string
+     */
+    public function getStoreCurrencyCode()
+    {
+        if (!$this->getOrder()) {
+            return "";
+        }
+
+        return $this->getOrder()->getStoreCurrencyCode();
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentMethod()
+    {
+        if (!$this->getOrder()) {
+            return "";
+        }
+
+        if (!$this->getOrder()->getPayment()) {
+            return "";
+        }
+
+        return $this->getOrder()->getPayment()->getMethod();
     }
 
     /**
@@ -222,7 +287,22 @@ class Trustedshops_Trustedshops_Block_Trustcard extends Trustedshops_Trustedshop
             return '';
         }
 
+        /*
+         * load attributes of the child product
+         */
         $product = $this->getProduct($item);
+        if ($product->isComposite()) {
+            $childItems = $item->getChildrenItems();
+            $childItem = array_shift($childItems);
+            if (!$childItem || !$childItem->getId()) {
+                return "";
+            }
+            $product = $childItem->getProduct();
+        }
+
+        if (!$product || !$product->getId()) {
+            return "";
+        }
 
         $attribute = $this->getMagentoAttribute($attributeCode);
 
@@ -243,6 +323,10 @@ class Trustedshops_Trustedshops_Block_Trustcard extends Trustedshops_Trustedshop
         return Mage::helper('core')->escapeHtml($value);
     }
 
+    /**
+     * @param $item
+     * @return Mage_Catalog_Model_Product
+     */
     public function getProduct($item)
     {
         $product = $item->getProduct();

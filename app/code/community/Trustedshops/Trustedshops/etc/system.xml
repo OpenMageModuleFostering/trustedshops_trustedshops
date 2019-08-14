@@ -230,8 +230,7 @@
                         </expert_collect_reviews>
                         <expert_collect_reviews_notice translate="label" module="trustedshops">
                             <label>Collect Product Reviews Notice</label>
-                            <comment><![CDATA[More Traffic, less returns:
-Make sure to unlock unlimited Product Reviews in your Trusted Shops plan]]></comment>
+                            <comment><![CDATA[More Traffic, less returns:<br/>Make sure to unlock unlimited Product Reviews in your Trusted Shops plan]]></comment>
                             <frontend_model>trustedshops/adminhtml_field_notice</frontend_model>
                             <sort_order>50</sort_order>
                             <show_in_default>1</show_in_default>
@@ -607,8 +606,9 @@ Make sure to unlock unlimited Product Reviews in your Trusted Shops plan]]></com
                             </depends>
                         </expert_rating_header>
 
-                        <rating_active translate="label" module="trustedshops">
+                        <rating_active translate="label comment" module="trustedshops">
                             <label>Show Star ratings on Product Detail Page below your Product Name</label>
+                            <comment>Please note that the Product Review Stars will only appear after the product has received its first review.</comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>160</sort_order>
@@ -623,8 +623,9 @@ Make sure to unlock unlimited Product Reviews in your Trusted Shops plan]]></com
                                 <collect_reviews>1</collect_reviews>
                             </depends>
                         </rating_active>
-                        <expert_rating_active translate="label" module="trustedshops">
+                        <expert_rating_active translate="label comment" module="trustedshops">
                             <label>Show Star ratings on Product Detail Page below your Product Name</label>
+                            <comment>Please note that the Product Review Stars will only appear after the product has received its first review.</comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>170</sort_order>
