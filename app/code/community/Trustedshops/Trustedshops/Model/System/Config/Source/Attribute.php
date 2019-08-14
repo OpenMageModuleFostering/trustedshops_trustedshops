@@ -30,7 +30,7 @@ class Trustedshops_Trustedshops_Model_System_Config_Source_Attribute
      * @param bool $asArray
      * @return array
      */
-    protected function getAvailableAttributes($asArray)
+    protected function getAvailableAttributes($asArray = false)
     {
         $availableAttributes = Mage::getResourceModel('catalog/product_attribute_collection')
             ->setOrder('frontend_label', 'asc')

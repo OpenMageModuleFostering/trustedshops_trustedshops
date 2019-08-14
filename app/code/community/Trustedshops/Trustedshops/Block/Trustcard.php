@@ -224,7 +224,7 @@ class Trustedshops_Trustedshops_Block_Trustcard extends Trustedshops_Trustedshop
      *
      * @return string
      */
-    public function getProductSku($item)
+    public function getProductSkuByItem($item)
     {
         if ($item->getHasChildren()) {
             $product = $this->getProduct($item);

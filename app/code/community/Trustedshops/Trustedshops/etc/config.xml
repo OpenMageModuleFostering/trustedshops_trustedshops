@@ -12,7 +12,7 @@
 <config>
     <modules>
         <Trustedshops_Trustedshops>
-            <version>1.1.0</version>
+            <version>1.1.2</version>
         </Trustedshops_Trustedshops>
     </modules>
     <global>
