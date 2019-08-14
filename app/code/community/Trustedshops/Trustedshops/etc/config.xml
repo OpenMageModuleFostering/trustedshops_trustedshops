@@ -12,7 +12,7 @@
 <config>
     <modules>
         <Trustedshops_Trustedshops>
-            <version>1.0.0</version>
+            <version>1.1.0</version>
         </Trustedshops_Trustedshops>
     </modules>
     <global>
@@ -25,6 +25,11 @@
             <trustedshops>
                 <class>Trustedshops_Trustedshops_Block</class>
             </trustedshops>
+            <adminhtml>
+                <rewrite>
+                    <widget_form_element_dependence>Trustedshops_Trustedshops_Block_Widget_Dependence</widget_form_element_dependence>
+                </rewrite>
+            </adminhtml>
         </blocks>
         <helpers>
             <trustedshops>

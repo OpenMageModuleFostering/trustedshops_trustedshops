@@ -34,3 +34,9 @@
 "http://www.trustedshops.co.uk/support/trustbadge/trustbadge-custom/","http://www.trustedshops.fr/support/trustbadge/trustbadge-custom/"
 "http://www.trustedshops.co.uk/support/product-reviews/","http://www.trustedshops.fr/support/integrer-les-avis-produits/"
 "Trusted Shops Reviews","Avis Trusted Shops"
+
+"Additional Product Attributes","Attributs produits supplémentaires"
+"These attributes for Product Reviews are optional and not integrated within Magento standard. You can choose from the product attributes which you have manually added to fill these fields. In this way you can use Google Shopping or improve your data analysis possibilities.","Ces attributs sont optionnels et ne sont pas définis par défaut dans la version standard de Magento. Afin de remplir ces champs, vous pouvez choisir parmi les attributs que vous aurez ajoutés manuellement à vos fiches produits. Ainsi, vous pourrez utiliser Google Shopping et optimiser vos capacités d’analyse des données."
+"This is the product identification code for trade items. If you use Google Shopping and want to display your review stars in Shopping and payed product ads, this information is necessary for Google. It also helps in matching your products. Trusted Shops highly recommends to use this option.","Code article international unique identifiant toute unité commerciale. Google exige ce paramètre si vous utilisez Google Shopping ou AdWords et souhaitez y afficher vos étoiles avis clients. Il permet aussi d’associer les avis clients aux produits. Trusted Shops vous recommande vivement d’activer cette option."
+"This is the brand name of the product. By setting this variable you  can improve your data analysis possibilities","Ce paramètre correspond à la marque du produit. En l’activant, vous améliorez vos capacités d’analyse"
+"Number that associates the product to its manufacturer","Identifiant associant un produit à son fabricant"

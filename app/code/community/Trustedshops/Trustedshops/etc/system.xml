@@ -250,6 +250,196 @@ Make sure to unlock unlimited Product Reviews in your Trusted Shops plan]]></com
                             </depends>
                         </expert_collect_reviews_notice>
 
+                        <review_attribute_header translate="label" module="trustedshops">
+                            <label>Additional Product Attributes</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>51</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <mode>
+                                    <fieldset>info</fieldset>
+                                    <value>standard</value>
+                                </mode>
+                                <collect_reviews>1</collect_reviews>
+                            </depends>
+                        </review_attribute_header>
+                        <expert_review_attribute_header translate="label" module="trustedshops">
+                            <label>Additional Product Attributes</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>51</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <mode>
+                                    <fieldset>info</fieldset>
+                                    <value>expert</value>
+                                </mode>
+                                <collect_orders>
+                                    <fieldset>trustbadge</fieldset>
+                                    <value>1</value>
+                                </collect_orders>
+                                <expert_collect_reviews>1</expert_collect_reviews>
+                            </depends>
+                        </expert_review_attribute_header>
+                        <review_attribute_notice translate="label" module="trustedshops">
+                            <label>Additional Product Attributes Notice</label>
+                            <comment><![CDATA[These attributes for Product Reviews are optional and not integrated within Magento standard. You can choose from the product attributes which you have manually added to fill these fields. In this way you can use Google Shopping or improve your data analysis possibilities.]]></comment>
+                            <frontend_model>trustedshops/adminhtml_field_notice</frontend_model>
+                            <sort_order>52</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <mode>
+                                    <fieldset>info</fieldset>
+                                    <value>standard</value>
+                                </mode>
+                                <collect_reviews>1</collect_reviews>
+                            </depends>
+                        </review_attribute_notice>
+                        <expert_review_attribute_notice translate="label" module="trustedshops">
+                            <label>Additional Product Attributes Notice</label>
+                            <comment><![CDATA[These attributes for Product Reviews are optional and not integrated within Magento standard. You can choose from the product attributes which you have manually added to fill these fields. In this way you can use Google Shopping or improve your data analysis possibilities.]]></comment>
+                            <frontend_model>trustedshops/adminhtml_field_notice</frontend_model>
+                            <sort_order>52</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <mode>
+                                    <fieldset>info</fieldset>
+                                    <value>expert</value>
+                                </mode>
+                                <collect_orders>
+                                    <fieldset>trustbadge</fieldset>
+                                    <value>1</value>
+                                </collect_orders>
+                                <expert_collect_reviews>1</expert_collect_reviews>
+                            </depends>
+                        </expert_review_attribute_notice>
+                        <review_attribute_gtin translate="label tooltip" module="trustedshops">
+                            <label>GTIN</label>
+                            <frontend_type>select</frontend_type>
+                            <tooltip>This is the product identification code for trade items. If you use Google Shopping and want to display your review stars in Shopping and payed product ads, this information is necessary for Google. It also helps in matching your products. Trusted Shops highly recommends to use this option.</tooltip>
+                            <source_model>trustedshops/system_config_source_attribute</source_model>
+                            <sort_order>53</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <mode>
+                                    <fieldset>info</fieldset>
+                                    <value>standard</value>
+                                </mode>
+                                <collect_reviews>1</collect_reviews>
+                            </depends>
+                        </review_attribute_gtin>
+                        <expert_review_attribute_gtin translate="label tooltip" module="trustedshops">
+                            <label>GTIN</label>
+                            <frontend_type>select</frontend_type>
+                            <tooltip>This is the product identification code for trade items. If you use Google Shopping and want to display your review stars in Shopping and payed product ads, this information is necessary for Google. It also helps in matching your products. Trusted Shops highly recommends to use this option.</tooltip>
+                            <source_model>trustedshops/system_config_source_attribute</source_model>
+                            <sort_order>53</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <mode>
+                                    <fieldset>info</fieldset>
+                                    <value>expert</value>
+                                </mode>
+                                <collect_orders>
+                                    <fieldset>trustbadge</fieldset>
+                                    <value>1</value>
+                                </collect_orders>
+                                <expert_collect_reviews>1</expert_collect_reviews>
+                            </depends>
+                        </expert_review_attribute_gtin>
+
+                        <review_attribute_brand translate="label tooltip" module="trustedshops">
+                            <label>Brand</label>
+                            <frontend_type>select</frontend_type>
+                            <tooltip>This is the brand name of the product. By setting this variable you  can improve your data analysis possibilities</tooltip>
+                            <source_model>trustedshops/system_config_source_attribute</source_model>
+                            <sort_order>54</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <mode>
+                                    <fieldset>info</fieldset>
+                                    <value>standard</value>
+                                </mode>
+                                <collect_reviews>1</collect_reviews>
+                            </depends>
+                        </review_attribute_brand>
+                        <expert_review_attribute_brand translate="label tooltip" module="trustedshops">
+                            <label>Brand</label>
+                            <frontend_type>select</frontend_type>
+                            <tooltip>This is the brand name of the product. By setting this variable you  can improve your data analysis possibilities</tooltip>
+                            <source_model>trustedshops/system_config_source_attribute</source_model>
+                            <sort_order>54</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <mode>
+                                    <fieldset>info</fieldset>
+                                    <value>expert</value>
+                                </mode>
+                                <collect_orders>
+                                    <fieldset>trustbadge</fieldset>
+                                    <value>1</value>
+                                </collect_orders>
+                                <expert_collect_reviews>1</expert_collect_reviews>
+                            </depends>
+                        </expert_review_attribute_brand>
+
+                        <review_attribute_mpn translate="label tooltip" module="trustedshops">
+                            <label>MPN</label>
+                            <frontend_type>select</frontend_type>
+                            <tooltip>Number that associates the product to its manufacturer</tooltip>
+                            <source_model>trustedshops/system_config_source_attribute</source_model>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <mode>
+                                    <fieldset>info</fieldset>
+                                    <value>standard</value>
+                                </mode>
+                                <collect_reviews>1</collect_reviews>
+                            </depends>
+                        </review_attribute_mpn>
+                        <expert_review_attribute_mpn translate="label tooltip" module="trustedshops">
+                            <label>MPN</label>
+                            <frontend_type>select</frontend_type>
+                            <tooltip>Number that associates the product to its manufacturer</tooltip>
+                            <source_model>trustedshops/system_config_source_attribute</source_model>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <mode>
+                                    <fieldset>info</fieldset>
+                                    <value>expert</value>
+                                </mode>
+                                <collect_orders>
+                                    <fieldset>trustbadge</fieldset>
+                                    <value>1</value>
+                                </collect_orders>
+                                <expert_collect_reviews>1</expert_collect_reviews>
+                            </depends>
+                        </expert_review_attribute_mpn>
+
+
                         <review_header translate="label" module="trustedshops">
                             <label>Product Review Sticker</label>
                             <frontend_type>text</frontend_type>

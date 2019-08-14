@@ -18,9 +18,18 @@ class Trustedshops_Trustedshops_Block_Trustcard extends Trustedshops_Trustedshop
     protected $_template = 'trustedshops/trustcard.phtml';
 
     /**
+     * magento order
+     *
      * @var Mage_Sales_Model_Order
      */
     protected $_order;
+
+    /**
+     * remember gtin, mpn and brand attribute
+     *
+     * @var array
+     */
+    protected $_attributeCache = array();
 
     /**
      * get the current order from the checkout session
@@ -87,6 +96,36 @@ class Trustedshops_Trustedshops_Block_Trustcard extends Trustedshops_Trustedshop
     }
 
     /**
+     * get the estimated delivery date
+     *
+     * @return string
+     */
+    public function getEstimatedDeliveryDate()
+    {
+        $deliveryData = new Varien_Object();
+        $deliveryData->setDate('');
+        Mage::dispatchEvent('trustedshops_get_estimated_delivery_date', array(
+            'order' => $this->getOrder(),
+            'delivery_date' => $deliveryData
+        ));
+        return $deliveryData->getDate();
+    }
+
+    /**
+     * get the product url
+     *
+     * @param Mage_Sales_Model_Order_Item $item
+     *
+     * @return string
+     */
+    public function getProductUrl($item)
+    {
+        $product = $this->getProduct($item);
+
+        return $product->getProductUrl();
+    }
+
+    /**
      * get the product image url
      *
      * @param Mage_Sales_Model_Order_Item $item
@@ -95,7 +134,21 @@ class Trustedshops_Trustedshops_Block_Trustcard extends Trustedshops_Trustedshop
      */
     public function getProductImage($item)
     {
-        return (string)Mage::helper('catalog/image')->init($item->getProduct(), 'image');
+        $product = $this->getProduct($item);
+
+        return (string)Mage::helper('catalog/image')->init($product, 'image');
+    }
+
+    /**
+     * get the product name
+     *
+     * @param Mage_Sales_Model_Order_Item $item
+     *
+     * @return string
+     */
+    public function getName($item)
+    {
+        return $item->getName();
     }
 
     /**
@@ -109,8 +162,110 @@ class Trustedshops_Trustedshops_Block_Trustcard extends Trustedshops_Trustedshop
     public function getProductSku($item)
     {
         if ($item->getHasChildren()) {
-            return $item->getProduct()->getSku();
+            $product = $this->getProduct($item);
+            return $product->getSku();
         }
+
         return $item->getSku();
+    }
+
+    /**
+     * get the product gtin
+     *
+     * @param Mage_Sales_Model_Order_Item $item
+     * @return string
+     */
+    public function getProductGTIN($item)
+    {
+        return $this->_getAttribute($item, 'gtin');
+    }
+
+    /**
+     * get the product mpn
+     *
+     * @param Mage_Sales_Model_Order_Item $item
+     * @return string
+     */
+    public function getProductMPN($item)
+    {
+        return $this->_getAttribute($item, 'mpn');
+    }
+
+    /**
+     * get the product brand
+     *
+     * @param Mage_Sales_Model_Order_Item $item
+     * @return string
+     */
+    public function getProductBrand($item)
+    {
+        return $this->_getAttribute($item, 'brand');
+    }
+
+    /**
+     * fetch the product attribute depended of the attribute type
+     *
+     * @param Mage_Sales_Model_Order_Item $item
+     * @param string $field
+     * @return string
+     */
+    protected function _getAttribute($item, $field)
+    {
+        // handle different attributes for expert mode
+        $prefix = "";
+        if ($this->isExpert()) {
+            $prefix = 'expert_';
+        }
+
+        $attributeCode = $this->getConfig($prefix . 'review_attribute_' . $field, 'product');
+        if (empty($attributeCode)) {
+            return '';
+        }
+
+        $product = $this->getProduct($item);
+
+        $attribute = $this->getMagentoAttribute($attributeCode);
+
+        switch ($attribute->getFrontendInput()) {
+            case 'select':
+                $value = $product->getAttributeText($attributeCode);
+                break;
+            case 'multiselect':
+                $value = $product->getAttributeText($attributeCode);
+                $value = implode(',', $value);
+                break;
+            default:
+                $value = $product->getResource()
+                    ->getAttributeRawValue($product->getId(), $attributeCode, Mage::app()->getStore());
+                break;
+        }
+
+        return Mage::helper('core')->escapeHtml($value);
+    }
+
+    public function getProduct($item)
+    {
+        $product = $item->getProduct();
+        if (empty($product)) {
+            $product = Mage::getModel('catalog/product')->load($item->getProductId());
+        }
+
+        return $product;
+    }
+
+    /**
+     * load the magento base attribute
+     *
+     * @param string $attributeCode
+     * @return Mage_Eav_Model_Entity_Attribute
+     */
+    protected function getMagentoAttribute($attributeCode)
+    {
+        if (empty($this->_attributeCache[$attributeCode])) {
+            $this->_attributeCache[$attributeCode] = Mage::getModel('eav/entity_attribute')
+                ->loadByCode('catalog_product', $attributeCode);
+        }
+
+        return $this->_attributeCache[$attributeCode];
     }
 }

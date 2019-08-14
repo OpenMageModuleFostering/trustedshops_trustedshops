@@ -16,20 +16,20 @@
         <span id="tsCheckoutOrderAmount"><?php echo $this->getOrderAmount() ?></span>
         <span id="tsCheckoutOrderCurrency"><?php echo $this->getOrder()->getStoreCurrencyCode() ?></span>
         <span id="tsCheckoutOrderPaymentType"><?php echo $this->getOrder()->getPayment()->getMethod() ?></span>
-        <span id="tsCheckoutOrderEstDeliveryDate"></span>
+        <span id="tsCheckoutOrderEstDeliveryDate"><?php echo $this->getEstimatedDeliveryDate() ?></span>
         <?php if ($this->collectReviews()) : ?>
             <!-- product reviews start -->
             <!-- for each product in the basket full set of data is required -->
             <?php /** @var Mage_Sales_Model_Order_Item $item */ ?>
             <?php foreach ($this->getOrder()->getAllVisibleItems() as $item) : ?>
                 <span class="tsCheckoutProductItem">
-                    <span class="tsCheckoutProductUrl"><?php echo $item->getProduct()->getProductUrl() ?></span>
+                    <span class="tsCheckoutProductUrl"><?php echo $this->getProductUrl($item) ?></span>
                     <span class="tsCheckoutProductImageUrl"><?php echo $this->getProductImage($item) ?></span>
-                    <span class="tsCheckoutProductName"><?php echo $item->getName() ?></span>
+                    <span class="tsCheckoutProductName"><?php echo $this->getName($item) ?></span>
                     <span class="tsCheckoutProductSKU"><?php echo $this->getProductSku($item) ?></span>
-                    <span class="tsCheckoutProductGTIN"></span>
-                    <span class="tsCheckoutProductMPN"></span>
-                    <span class="tsCheckoutProductBrand"></span>
+                    <span class="tsCheckoutProductGTIN"><?php echo $this->getProductGTIN($item) ?></span>
+                    <span class="tsCheckoutProductMPN"><?php echo $this->getProductMPN($item) ?></span>
+                    <span class="tsCheckoutProductBrand"><?php echo $this->getProductBrand($item) ?></span>
                 </span>
             <?php endforeach; ?>
             <!-- product reviews end -->

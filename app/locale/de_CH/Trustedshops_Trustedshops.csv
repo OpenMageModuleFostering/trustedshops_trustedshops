@@ -36,3 +36,9 @@
 "http://www.trustedshops.co.uk/support/trustbadge/trustbadge-custom/","http://www.trustedshops.de/shopbetreiber/integration/trustbadge/trustbadge-custom/"
 "http://www.trustedshops.co.uk/support/product-reviews/","http://www.trustedshops.de/shopbetreiber/integration/product-reviews/"
 "Trusted Shops Reviews","Trusted Shops Bewertungen"
+
+"Additional Product Attributes","Weitere Produktattribute"
+"These attributes for Product Reviews are optional and not integrated within Magento standard. You can choose from the product attributes which you have manually added to fill these fields. In this way you can use Google Shopping or improve your data analysis possibilities.","Diese Attribute für Produktbewertungen sind nicht im Magento-Standard enthalten. Sie können diese Felder aber mit den Produktattributen belegen, die Sie manuell hinzugefügt haben. Auf diese Weise können Sie Google Shopping nutzen oder Ihre Datenanalysemöglichkeiten erweitern."
+"This is the product identification code for trade items. If you use Google Shopping and want to display your review stars in Shopping and payed product ads, this information is necessary for Google. It also helps in matching your products. Trusted Shops highly recommends to use this option.","Identifikationsnummer, mit der Produkte und Packstücke weltweit eindeutig identifiziert werden können. Wenn Sie Google Shopping nutzen und Ihre Bewertungssterne in Shopping und bezahlten Produktanzeigen ausspielen möchten, benötigt Google die GTIN. Sie hilft außerdem Ihre Produkte zuzuordnen. Trusted Shops empfiehlt dringend, diese Option zu nutzen."
+"This is the brand name of the product. By setting this variable you  can improve your data analysis possibilities","Markenname des Produkts. Durch Übergeben dieser Variablen verbessern Sie Ihre Analysemöglichkeiten."
+"Number that associates the product to its manufacturer","Kennzahl die das Produkt eindeutig einem bestimmten Hersteller zuordnet"
