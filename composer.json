@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Trustedshops_Trustedshops",
+    "type": "magento-module",
+    "license": "Open-Software-License-(OSL)",
+    "homepage": "",
+    "description": "Trustedshops Integration",
+    "authors": [
+    {
+        "name": "Trusted Shops",
+        "email": "productfeedback@trustedshops.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
